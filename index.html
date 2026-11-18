@@ -2,899 +2,465 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="theme-color" content="#2563EB" id="metaThemeColor" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Class 10 Prep" />
-  <title>Class 10 Board &amp; GK Prep — Offline PWA</title>
-
-  <!-- Inline SVG App Icon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%232563EB'/%3E%3Ctext x='96' y='118' font-family='system-ui,sans-serif' font-size='84' font-weight='900' fill='%23FFFFFF' text-anchor='middle'%3E10%3C/text%3E%3Ccircle cx='148' cy='46' r='16' fill='%2322C55E'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%232563EB'/%3E%3Ctext x='96' y='118' font-family='system-ui,sans-serif' font-size='84' font-weight='900' fill='%23FFFFFF' text-anchor='middle'%3E10%3C/text%3E%3C/svg%3E" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2563EB" />
+  <title>Class 10 Board &amp; GK Prep</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%232563EB'/%3E%3Ctext x='96' y='118' font-family='system-ui,sans-serif' font-size='84' font-weight='900' fill='%23FFF' text-anchor='middle'%3E10%3C/text%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg-primary: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --bg-subtle: #F1F5F9;
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-      --border-color: #E2E8F0;
-      --accent: #2563EB;
-      --accent-hover: #1D4ED8;
-      --accent-soft: #DBEAFE;
-      --accent-text: #1E40AF;
-      --correct: #16A34A;
-      --correct-bg: #DCFCE7;
-      --correct-border: #22C55E;
-      --wrong: #DC2626;
-      --wrong-bg: #FEE2E2;
-      --wrong-border: #EF4444;
-      --warn: #D97706;
-      --warn-bg: #FEF3C7;
-      --radius-lg: 14px;
-      --radius-md: 10px;
-      --radius-sm: 8px;
+      --bg: #F8FAFC; --card: #FFFFFF; --sub: #F1F5F9; --txt: #0F172A; --muted: #64748B;
+      --bdr: #E2E8F0; --acc: #2563EB; --acc-soft: #DBEAFE; --acc-txt: #1E40AF;
+      --ok: #16A34A; --ok-bg: #DCFCE7; --bad: #DC2626; --bad-bg: #FEE2E2; --warn: #D97706; --warn-bg: #FEF3C7;
     }
-
     [data-theme="dark"] {
-      --bg-primary: #0B1120;
-      --bg-card: #1E293B;
-      --bg-subtle: #334155;
-      --text-primary: #F8FAFC;
-      --text-secondary: #CBD5E1;
-      --text-muted: #94A3B8;
-      --border-color: #334155;
-      --accent: #3B82F6;
-      --accent-hover: #60A5FA;
-      --accent-soft: #1E3A8A;
-      --accent-text: #BFDBFE;
-      --correct: #16A34A;
-      --correct-bg: #064E3B;
-      --correct-border: #22C55E;
-      --wrong: #DC2626;
-      --wrong-bg: #450A0A;
-      --wrong-border: #EF4444;
-      --warn: #F59E0B;
-      --warn-bg: #451A03;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html, body {
-      font-size: 16px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      min-height: 100dvh;
-      overflow-x: hidden;
-      line-height: 1.5;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    button, input, select, textarea {
-      font-family: inherit;
-      font-size: 1rem;
-      color: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      touch-action: manipulation;
-      border: none;
-      background: none;
-      user-select: none;
-    }
-
-    .app-shell {
-      max-width: 680px;
-      margin: 0 auto;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      padding: 12px 16px 28px;
-    }
-
-    /* Header */
-    .app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 0 14px;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 12px;
-      gap: 8px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 11px;
-      background: var(--accent);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.15rem;
-      flex-shrink: 0;
-    }
-
-    .brand-text h1 {
-      font-size: 1.08rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    .brand-sub {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .offline-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 1px 7px;
-      border-radius: 999px;
-      background: var(--correct-bg);
-      color: var(--correct);
-      font-weight: 700;
-      font-size: 0.7rem;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .streak-pill {
-      min-height: 42px;
-      padding: 0 11px;
-      border-radius: var(--radius-md);
-      background: var(--warn-bg);
-      color: var(--warn);
-      font-weight: 800;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .icon-btn {
-      min-width: 48px;
-      min-height: 48px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
-      background: var(--bg-card);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.12s ease;
-    }
-
-    .icon-btn:active {
-      transform: scale(0.95);
-    }
-
-    /* Install Banner */
-    .install-banner {
-      background: var(--accent-soft);
-      border: 1.5px solid var(--accent);
-      border-radius: var(--radius-lg);
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .install-banner.hidden {
-      display: none;
-    }
-
-    .install-info h2 {
-      font-size: 0.92rem;
-      font-weight: 800;
-      color: var(--accent-text);
-    }
-
-    .install-info p {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-
-    .install-cta-btn {
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: var(--radius-md);
-      background: var(--accent);
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 0.84rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* Navigation Tabs */
-    .nav-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      background: var(--bg-subtle);
-      padding: 5px;
-      border-radius: var(--radius-md);
-      margin-bottom: 14px;
-    }
-
-    .nav-tab {
-      min-height: 44px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      transition: transform 0.1s ease;
-    }
-
-    .nav-tab.active {
-      background: var(--bg-card);
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    /* Screens */
-    .screen {
-      display: none;
-      flex: 1;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .screen.active {
-      display: flex;
-    }
-
-    .tab-pane {
-      display: none;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .tab-pane.active {
-      display: flex;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 15px;
-    }
-
-    .section-label {
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Stats & Rank */
-    .rank-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-subtle);
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
-      margin-bottom: 10px;
-    }
-
-    .rank-title {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: var(--text-primary);
-    }
-
-    .xp-badge {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 3px 9px;
-      border-radius: 999px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .stat-box {
-      background: var(--bg-subtle);
-      border-radius: var(--radius-md);
-      padding: 11px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stat-value {
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--accent);
-    }
-
-    .stat-title {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    .stats-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border-color);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .text-link-btn {
-      font-size: 0.78rem;
-      color: var(--accent);
-      font-weight: 700;
-      min-height: 36px;
-      padding: 4px 8px;
-      border-radius: var(--radius-sm);
-    }
-
-    /* Selection Grids */
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .choice-btn {
-      min-height: 52px;
-      padding: 8px 6px;
-      border-radius: var(--radius-md);
-      border: 2px solid var(--border-color);
-      background: var(--bg-card);
-      font-weight: 700;
-      font-size: 0.92rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      transition: transform 0.1s ease;
-    }
-
-    .choice-btn span.sub {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .choice-btn.selected {
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent-text);
-    }
-
-    .choice-btn.selected span.sub {
-      color: var(--accent-text);
-    }
-
-    .choice-btn:active {
-      transform: scale(0.97);
-    }
-
-    /* Subject Pills (9 Subjects + All) */
-    .subject-pills {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .subject-pill {
-      min-height: 48px;
-      padding: 8px 6px;
-      border-radius: var(--radius-md);
-      border: 1.5px solid var(--border-color);
-      background: var(--bg-card);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.1s ease;
-    }
-
-    .subject-pill.wide {
-      grid-column: span 3;
-      font-size: 0.92rem;
-      font-weight: 800;
-    }
-
-    .subject-pill.selected {
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent-text);
-    }
-
-    .subject-pill:active {
-      transform: scale(0.97);
-    }
-
-    .two-col-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    @media (max-width: 480px) {
-      .two-col-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .length-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .mode-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .helper-note {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    /* Revision Banks */
-    .bank-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .bank-btn {
-      min-height: 50px;
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
-      border: 1.5px solid var(--border-color);
-      background: var(--bg-subtle);
-      font-weight: 700;
-      font-size: 0.86rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .bank-btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
-
-    .badge-count {
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      font-size: 0.76rem;
-      font-weight: 800;
-    }
-
-    /* Primary & Secondary CTA */
-    .primary-btn {
-      min-height: 54px;
-      width: 100%;
-      border-radius: var(--radius-lg);
-      background: var(--accent);
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 1.02rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: transform 0.1s ease;
-    }
-
-    .primary-btn:active {
-      transform: scale(0.98);
-    }
-
-    .secondary-btn {
-      min-height: 50px;
-      width: 100%;
-      border-radius: var(--radius-lg);
-      border: 2px solid var(--border-color);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      font-weight: 700;
-      font-size: 0.94rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* Quick Notes / Formula Cards */
-    .notes-filter-row {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-    }
-
-    .note-chip {
-      min-height: 38px;
-      padding: 0 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border-color);
-      background: var(--bg-card);
-      font-size: 0.8rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .note-chip.active {
-      background: var(--accent);
-      color: #FFFFFF;
-      border-color: var(--accent);
-    }
-
-    .note-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--accent);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .note-card h3 {
-      font-size: 0.92rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .note-card p {
-      font-size: 0.88rem;
-      color: var(--text-primary);
-      line-height: 1.45;
-    }
-
-    /* Custom Question Form */
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      min-height: 46px;
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
-      border: 1.5px solid var(--border-color);
-      background: var(--bg-primary);
-      color: var(--text-primary);
-    }
-
-    .form-textarea {
-      min-height: 76px;
-      resize: vertical;
-    }
-
-    /* Active Quiz Screen */
-    .quiz-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .quiz-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .tag-pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      background: var(--bg-subtle);
-      color: var(--text-secondary);
-    }
-
-    .tag-pill.subject {
-      background: var(--accent-soft);
-      color: var(--accent-text);
-    }
-
-    .tag-pill.Easy {
-      background: var(--correct-bg);
-      color: var(--correct);
-    }
-
-    .tag-pill.Medium {
-      background: var(--warn-bg);
-      color: var(--warn);
-    }
-
-    .tag-pill.Hard {
-      background: var(--wrong-bg);
-      color: var(--wrong);
-    }
-
-    .quiz-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .counter-pill {
-      font-weight: 800;
-      font-size: 0.9rem;
-      padding: 0 4px;
-    }
-
-    .lifeline-btn {
-      min-height: 44px;
-      padding: 0 10px;
-      border-radius: var(--radius-md);
-      border: 1.5px solid var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent-text);
-      font-weight: 800;
-      font-size: 0.78rem;
-    }
-
-    .lifeline-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .exit-btn {
-      min-height: 44px;
-      padding: 0 12px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
-      background: var(--bg-card);
-      font-weight: 700;
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-    }
-
-    .bookmark-btn.active svg {
-      fill: #F59E0B;
-      stroke: #F59E0B;
-    }
-
-    /* Progress & Timer Bars */
-    .progress-track {
-      width: 100%;
-      height: 8px;
-      background: var(--bg-subtle);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      width: 100%;
-      height: 100%;
-      background: var(--accent);
-      transform-origin: left center;
-      transform: scaleX(0);
-      transition: transform 0.22s ease;
-    }
-
-    .timer-wrapper {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .timer-wrapper.visible {
-      display: flex;
-    }
-
-    .timer-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-    }
-
-    .timer-fill {
-      width: 100%;
-      height: 100%;
-      background: var(--warn);
-      transform-origin: left center;
-      transform: scaleX(1);
-      transition: transform 0.2s linear;
-    }
-
-    /* Question & Options */
-    .question-card {
-      padding: 18px 16px;
-    }
-
-    .question-text {
-      font-size: 1.06rem;
-      font-weight: 700;
-      line-height: 1.45;
-    }
-
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .option-btn {
-      min-height: 54px;
-      width: 100%;
-      text-align: left;
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      border: 2px solid var(--border-color);
-      background: var(--bg-card);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: transform 0.1s ease, opacity 0.15s ease;
-    }
-
-    .option-btn:not(:disabled):active {
-      transform: scale(0.985);
-    }
-
-    .option-btn:disabled {
-      cursor: default;
-    }
-
-    .option-btn.eliminated {
-      opacity: 0.32;
-      pointer-events: none;
-      text-decoration: line-through;
-    }
-
-    .opt-letter {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      background: var(--bg-subtle);
-      color: var(--text-secondary);
-      font-weight: 800;
-      font-size: 0.86rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .opt-content {
-      font-size: 0.96rem;
-      font-weight: 500;
-      line-height: 1.4;
-      flex: 1;
-    }
-
-    .option-btn.correct {
-      border-color: #16A34A;
-      background-color: var(--correct-bg);
-    }
-
-    .option-btn.correct .opt-letter {
-      background-color: #16A34A;
-      color: #FFFFFF;
-    }
-
-    .option-btn.wrong {
-      border-color: #DC2626;
-      background-color: var(--wrong-bg);
-    }
-
-    .option-btn.wrong .opt-letter {
-      background-color: #DC2626;
-      color: #FFFFFF;
-    }
-
-    /* Explanation Box */
-    .explanation-box {
-      display: none;
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
-      background: var(--bg-subtle);
-      border-left: 4px solid var(--accent);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
-
-    .explanation-box.visible {
-      display: block;
-    }
-
-    .explanation-status {
-      font-weight: 800;
-      font-size: 0.88rem;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    .explanation-status.pass { color: #16A34A; }
-    .explanation-status.fail { color: #DC2626; }
-
-    /* Results Screen */
-    .score-hero {
-      text-align: center;
-      padding: 22px 16px;
-    }
-
-    .score-circle {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 118px;
-      height: 118px;
-      border-radius: 999px;
-      border:
+      --bg: #0B1120; --card: #1E293B; --sub: #334155; --txt: #F8FAFC; --muted: #94A3B8;
+      --bdr: #334155; --acc: #3B82F6; --acc-soft: #1E3A8A; --acc-txt: #BFDBFE;
+      --ok: #22C55E; --ok-bg: #064E3B; --bad: #EF4444; --bad-bg: #450A0A; --warn: #F59E0B; --warn-bg: #451A03;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body { font: 16px/1.45 system-ui, -apple-system, Roboto, sans-serif; background: var(--bg); color: var(--txt); min-height: 100dvh; overflow-x: hidden; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; touch-action: manipulation; border: none; background: none; }
+    .shell { max-width: 640px; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; padding: 12px 14px 24px; gap: 12px; }
+    .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--bdr); }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .logo { width: 40px; height: 40px; border-radius: 10px; background: var(--acc); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+    .pill-ok { font-size: .72rem; font-weight: 700; padding: 2px 7px; border-radius: 99px; background: var(--ok-bg); color: var(--ok); }
+    .icon-btn { min-width: 48px; min-height: 48px; border-radius: 10px; border: 1px solid var(--bdr); background: var(--card); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; }
+    .banner { background: var(--acc-soft); border: 1.5px solid var(--acc); border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .banner.hide { display: none; }
+    .btn-sm { min-height: 42px; padding: 0 14px; border-radius: 9px; background: var(--acc); color: #fff; font-weight: 800; font-size: .85rem; white-space: nowrap; }
+    .screen { display: none; flex-direction: column; gap: 12px; flex: 1; }
+    .screen.active { display: flex; }
+    .card { background: var(--card); border: 1px solid var(--bdr); border-radius: 14px; padding: 14px; }
+    .lbl { font-size: .78rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat { background: var(--sub); border-radius: 10px; padding: 10px; }
+    .stat b { font-size: 1.25rem; color: var(--acc); display: block; }
+    .stat span { font-size: .76rem; color: var(--muted); font-weight: 600; }
+    .chip { min-height: 48px; padding: 8px 6px; border-radius: 10px; border: 1.5px solid var(--bdr); background: var(--card); font-weight: 700; font-size: .86rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .chip.wide { grid-column: span 3; font-weight: 800; }
+    .chip.on { border-color: var(--acc); background: var(--acc-soft); color: var(--acc-txt); }
+    .cta { min-height: 52px; width: 100%; border-radius: 12px; background: var(--acc); color: #fff; font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .cta-sec { min-height: 48px; width: 100%; border-radius: 12px; border: 1.5px solid var(--bdr); background: var(--card); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .cta-sec:disabled { opacity: .45; }
+    .bar-bg { width: 100%; height: 7px; background: var(--sub); border-radius: 99px; overflow: hidden; }
+    .bar-fill { width: 100%; height: 100%; background: var(--acc); transform-origin: left; transform: scaleX(0); transition: transform .2s ease; }
+    .opt { min-height: 52px; width: 100%; text-align: left; padding: 12px; border-radius: 10px; border: 2px solid var(--bdr); background: var(--card); display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+    .opt:disabled { cursor: default; }
+    .opt.cut { opacity: .3; pointer-events: none; text-decoration: line-through; }
+    .opt.ok { border-color: var(--ok); background: var(--ok-bg); }
+    .opt.bad { border-color: var(--bad); background: var(--bad-bg); }
+    .ltr { width: 26px; height: 26px; border-radius: 6px; background: var(--sub); font-weight: 800; font-size: .85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .opt.ok .ltr { background: var(--ok); color: #fff; }
+    .opt.bad .ltr { background: var(--bad); color: #fff; }
+    .exp { display: none; padding: 12px; border-radius: 10px; background: var(--sub); border-left: 4px solid var(--acc); font-size: .9rem; }
+    .exp.show { display: block; }
+    .inp { width: 100%; min-height: 44px; padding: 8px 10px; border-radius: 8px; border: 1.5px solid var(--bdr); background: var(--bg); margin-bottom: 8px; }
+    .rev { border: 1px solid var(--bdr); border-radius: 10px; padding: 12px; margin-bottom: 10px; background: var(--card); font-size: .9rem; }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="hdr">
+    <div class="brand">
+      <div class="logo">10</div>
+      <div>
+        <div style="font-weight:800;font-size:1.05rem;">Class 10 &amp; GK Prep</div>
+        <span class="pill-ok">● Offline Ready</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span id="xpPill" style="font-size:.8rem;font-weight:800;padding:6px 10px;border-radius:8px;background:var(--warn-bg);color:var(--warn);">0 XP</span>
+      <button id="themeBtn" class="icon-btn" aria-label="Theme">🌓</button>
+    </div>
+  </header>
+
+  <div id="installBox" class="banner">
+    <div>
+      <div style="font-weight:800;font-size:.9rem;color:var(--acc-txt);">Install Offline App</div>
+      <div style="font-size:.76rem;color:var(--muted);">Add icon to home screen for instant access</div>
+    </div>
+    <button id="installBtn" class="btn-sm">Install App</button>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <main id="homeScr" class="screen active">
+    <div class="card">
+      <div class="lbl"><span>Your Study Progress</span><span id="unseenLbl">45 Unseen</span></div>
+      <div class="grid2">
+        <div class="stat"><b id="accVal">--%</b><span>Best Accuracy</span></div>
+        <div class="stat"><b id="mastVal">0 / 45</b><span>Mastered MCQs</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:.78rem;color:var(--muted);">
+        <span>Unseen questions shown first</span>
+        <button id="resetBtn" style="color:var(--acc);font-weight:700;padding:4px;">Reset History</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="lbl"><span>1. Difficulty</span></div>
+      <div class="grid3" id="diffGrp">
+        <button class="chip" data-d="Easy">Easy</button>
+        <button class="chip on" data-d="Medium">Medium</button>
+        <button class="chip" data-d="Hard">Hard</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="lbl"><span>2. Subject</span></div>
+      <div class="grid3" id="subjGrp">
+        <button class="chip wide on" data-s="All">All 9 Subjects (Mixed)</button>
+        <button class="chip" data-s="Maths">Maths</button>
+        <button class="chip" data-s="Physics">Physics</button>
+        <button class="chip" data-s="Chemistry">Chemistry</button>
+        <button class="chip" data-s="Biology">Biology</button>
+        <button class="chip" data-s="History">History</button>
+        <button class="chip" data-s="Civics">Civics</button>
+        <button class="chip" data-s="Geography">Geography</button>
+        <button class="chip" data-s="Economics">Economics</button>
+        <button class="chip" data-s="GK">GK</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="lbl"><span>3. Questions</span></div>
+        <div class="grid3" id="lenGrp">
+          <button class="chip on" data-l="10">10</button>
+          <button class="chip" data-l="15">15</button>
+          <button class="chip" data-l="20">20</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="lbl"><span>4. Mode</span></div>
+        <div class="grid2" id="modeGrp">
+          <button class="chip on" data-m="practice">Untimed</button>
+          <button class="chip" data-m="timed">30s Timer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <button id="mistakeBtn" class="cta-sec" disabled>Mistakes (<span id="mCnt">0</span>)</button>
+      <button id="bmkBtn" class="cta-sec" disabled>Saved (<span id="bCnt">0</span>)</button>
+    </div>
+
+    <button id="startBtn" class="cta">Start Non-Repeating Test →</button>
+
+    <details class="card">
+      <summary style="font-weight:800;font-size:.9rem;cursor:pointer;">+ Add Your Own Custom Question</summary>
+      <form id="addForm" style="margin-top:10px;">
+        <div class="grid2">
+          <select id="cSub" class="inp"><option>Maths</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>History</option><option>Civics</option><option>Geography</option><option>Economics</option><option>GK</option></select>
+          <select id="cDif" class="inp"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+        </div>
+        <input id="cQ" class="inp" placeholder="Question text..." required />
+        <input id="cA" class="inp" placeholder="Correct answer..." required />
+        <input id="cW1" class="inp" placeholder="Wrong option 1..." required />
+        <input id="cW2" class="inp" placeholder="Wrong option 2..." required />
+        <input id="cW3" class="inp" placeholder="Wrong option 3..." required />
+        <input id="cE" class="inp" placeholder="Short explanation..." required />
+        <button type="submit" class="cta">Save Custom Question</button>
+      </form>
+    </details>
+  </main>
+
+  <!-- QUIZ SCREEN -->
+  <section id="quizScr" class="screen">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;">
+      <div>
+        <span id="qSub" style="font-size:.76rem;font-weight:800;padding:4px 9px;border-radius:99px;background:var(--acc-soft);color:var(--acc-txt);">Physics</span>
+        <span id="qCnt" style="font-weight:800;font-size:.9rem;margin-left:6px;">1/10</span>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <button id="lifeBtn" class="icon-btn" style="padding:0 10px;font-size:.8rem;color:var(--acc);">50:50 (<span id="lCnt">3</span>)</button>
+        <button id="starBtn" class="icon-btn" aria-label="Bookmark">☆</button>
+        <button id="exitBtn" class="icon-btn" style="padding:0 10px;font-size:.82rem;">Exit</button>
+      </div>
+    </div>
+    <div class="bar-bg"><div id="progBar" class="bar-fill"></div></div>
+    <div id="tmrBox" style="display:none;font-size:.82rem;font-weight:800;color:var(--warn);">Time Left: <span id="tmrTxt">30s</span></div>
+    <div class="card"><div id="qTxt" style="font-weight:700;font-size:1.05rem;"></div></div>
+    <div id="optBox"></div>
+    <div id="expBox" class="exp"><b id="expHdr" style="display:block;margin-bottom:4px;"></b><span id="expTxt"></span></div>
+    <button id="nextBtn" class="cta" style="display:none;">Next Question →</button>
+  </section>
+
+  <!-- RESULTS SCREEN -->
+  <section id="resScr" class="screen">
+    <div class="card" style="text-align:center;padding:22px 14px;">
+      <div id="resScore" style="font-size:2rem;font-weight:900;color:var(--acc);">8 / 10</div>
+      <div id="resPct" style="font-weight:800;margin:4px 0;">80% Accuracy</div>
+      <div id="resTime" style="font-size:.85rem;color:var(--muted);"></div>
+    </div>
+    <button id="againBtn" class="cta">Practice Next Unseen Questions</button>
+    <button id="retryBtn" class="cta-sec" style="display:none;">Retry Missed Questions</button>
+    <button id="homeBtn" class="cta-sec">Back to Home</button>
+    <div class="card"><div class="lbl"><span>Answer Review</span></div><div id="revBox"></div></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  try {
+    const ic = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%232563EB'/%3E%3Ctext x='256' y='315' font-family='system-ui,sans-serif' font-size='225' font-weight='900' fill='%23FFF' text-anchor='middle'%3E10%3C/text%3E%3C/svg%3E";
+    const m = { name:"Class 10 Board & GK Prep", short_name:"Class10Prep", start_url:"./index.html", display:"standalone", background_color:"#0B1120", theme_color:"#2563EB", icons:[{src:ic,sizes:"192x192",type:"image/svg+xml"},{src:ic,sizes:"512x512",type:"image/svg+xml"}] };
+    const l = document.createElement("link"); l.rel="manifest"; l.href="data:application/manifest+json;charset=utf-8,"+encodeURIComponent(JSON.stringify(m)); document.head.appendChild(l);
+  } catch(e){}
+  if("serviceWorker" in navigator && location.protocol==="https:"){ navigator.serviceWorker.register("./sw.js").catch(function(){}); }
+
+  function Q(id,d,s,q,o,e){ return {id:id,d:d,s:s,q:q,o:o,e:e}; }
+  const BASE_QS = [
+    Q(1,"Easy","Physics","SI unit of power of a lens is:",["Dioptre","Watt","Joule","Newton"],"1 Dioptre is the power of a lens of focal length 1 metre (P = 1/f)."),
+    Q(2,"Easy","Physics","Instrument connected in series to measure electric current:",["Ammeter","Voltmeter","Rheostat","Barometer"],"An ammeter has very low resistance and measures current in series."),
+    Q(3,"Easy","Physics","Mirror used by dentists to see enlarged images of teeth:",["Concave mirror","Convex mirror","Plane mirror","Cylindrical mirror"],"Concave mirrors form virtual, erect, magnified images when objects are within focus."),
+    Q(4,"Easy","Chemistry","Common name of CaOCl2 used to disinfect drinking water:",["Bleaching powder","Baking soda","Washing soda","Plaster of Paris"],"Calcium oxychloride (CaOCl2) is bleaching powder."),
+    Q(5,"Easy","Chemistry","A solution turns red litmus blue. Its pH is likely:",["10","1","4","5"],"Bases turn red litmus blue and have pH > 7."),
+    Q(6,"Easy","Chemistry","Which metal is liquid at room temperature?",["Mercury","Sodium","Iron","Aluminium"],"Mercury (Hg) is a liquid metal at room temperature."),
+    Q(7,"Easy","Biology","In plants, xylem tissue transports:",["Water and minerals","Prepared food","Oxygen gas","Hormones only"],"Xylem conducts water and minerals upward from roots to leaves."),
+    Q(8,"Easy","Biology","Main thinking part of the human brain:",["Forebrain (Cerebrum)","Medulla","Spinal cord","Pons"],"Cerebrum handles memory, reasoning, and voluntary actions."),
+    Q(9,"Easy","Maths","HCF of 96 and 404 is:",["4","8","12","2"],"96 = 2^5 × 3 and 404 = 2^2 × 101, so HCF = 2^2 = 4."),
+    Q(10,"Easy","Maths","10th term of the AP: 2, 7, 12, ... is:",["47","42","52","37"],"a10 = a + 9d = 2 + 9(5) = 47."),
+    Q(11,"Easy","Maths","Distance of point P(3, 4) from origin (0, 0):",["5 units","7 units","1 unit","25 units"],"√(3² + 4²) = √25 = 5 units."),
+    Q(12,"Easy","History","Mahatma Gandhi returned to India from South Africa in:",["January 1915","April 1919","March 1930","August 1942"],"Gandhiji returned in January 1915 after leading satyagraha in South Africa."),
+    Q(13,"Easy","History","Who hosted the Congress of Vienna in 1815?",["Duke Metternich","Bismarck","Mazzini","Napoleon"],"Austrian Chancellor Duke Metternich hosted the 1815 Congress."),
+    Q(14,"Easy","Civics","Which subject belongs to the Union List?",["Defence and Banking","Police","Agriculture","Local Government"],"National matters like Defence, Foreign Affairs, and Banking are in the Union List."),
+    Q(15,"Easy","Geography","Soil also known as 'Regur soil' ideal for cotton:",["Black soil","Alluvial soil","Laterite soil","Arid soil"],"Black soil (Regur) retains moisture well and is ideal for cotton."),
+    Q(16,"Easy","Economics","Dairy farming and fishing belong to which sector?",["Primary sector","Secondary sector","Tertiary sector","IT sector"],"Directly exploiting natural resources falls under the Primary sector."),
+    Q(17,"Easy","GK","First mission to land near the Moon's south pole:",["Chandrayaan-3","Mangalyaan","Aditya-L1","Astrosat"],"ISRO's Chandrayaan-3 landed near the lunar south pole in August 2023."),
+
+    Q(18,"Medium","Physics","A 220V, 100W bulb operated on 110V consumes power:",["25 W","50 W","75 W","100 W"],"Since R = V²/P is constant, halving voltage reduces power to 1/4th: 100/4 = 25 W."),
+    Q(19,"Medium","Physics","Which is NOT true about magnetic field lines?",["Two field lines intersect at poles","Outside magnet they go North to South","Inside magnet they go South to North","Closer lines mean stronger field"],"Magnetic field lines never intersect each other."),
+    Q(20,"Medium","Chemistry","In CuO + H2 → Cu + H2O, which is oxidized and reduced?",["H2 oxidized, CuO reduced","CuO oxidized, H2 reduced","Both oxidized","Both reduced"],"H2 gains oxygen (oxidized) and CuO loses oxygen (reduced)."),
+    Q(21,"Medium","Chemistry","Functional group in 'Butanone' is:",["Ketone (>C=O)","Aldehyde (-CHO)","Carboxylic acid (-COOH)","Alcohol (-OH)"],"The suffix '-one' indicates a ketone group."),
+    Q(22,"Medium","Biology","F2 phenotypic ratio in a Mendelian monohybrid cross (TT × tt):",["3 Tall : 1 Dwarf","1 Tall : 1 Dwarf","9 : 3 : 3 : 1","2 : 1"],"Selfing Tt gives TT, Tt, Tt, tt -> 3 Tall : 1 Dwarf."),
+    Q(23,"Medium","Biology","Muscle cramps during sudden exercise are caused by:",["Lactic acid accumulation","Ethanol formation","Excess oxygen","Glycogen storage"],"Anaerobic breakdown of pyruvate in muscles produces lactic acid."),
+    Q(24,"Medium","Maths","If 2x² + kx + 3 = 0 has equal real roots, k equals:",["±2√6","±6","±3","24"],"D = b² - 4ac = 0 => k² - 24 = 0 => k = ±2√6."),
+    Q(25,"Medium","Maths","If sin A = 3/5, then cos A and tan A are:",["cos A = 4/5, tan A = 3/4","cos A = 5/4, tan A = 4/3","cos A = 3/4, tan A = 4/5","cos A = 4/5, tan A = 4/3"],"Base = √(5² - 3²) = 4, so cos A = 4/5 and tan A = 3/4."),
+    Q(26,"Medium","Maths","Sides of two similar triangles are in ratio 4 : 9. Ratio of areas is:",["16 : 81","2 : 3","4 : 9","64 : 729"],"Area ratio = (side ratio)² = 4² : 9² = 16 : 81."),
+    Q(27,"Medium","History","Gandhiji withdrew the Non-Cooperation Movement in Feb 1922 due to:",["Chauri Chaura violent incident","Gandhi-Irwin Pact","Simon Commission","Rowlatt Act"],"Protesters set fire to a police station at Chauri Chaura in Gorakhpur."),
+    Q(28,"Medium","Civics","Amendments making regular Panchayat/Municipal elections mandatory:",["73rd and 74th Amendments","42nd Amendment","86th Amendment","101st Amendment"],"The 1992 73rd and 74th Amendments constitutionalized local bodies."),
+    Q(29,"Medium","Geography","Sardar Sarovar Dam is built on which river?",["Narmada River","Mahanadi River","Satluj River","Krishna River"],"Built on the Narmada River in Gujarat."),
+    Q(30,"Medium","Economics","5 family members work on a farm needing only 3. Extra 2 face:",["Disguised unemployment","Seasonal unemployment","Cyclical unemployment","Frictional unemployment"],"Disguised unemployment occurs when extra workers add zero extra output."),
+    Q(31,"Medium","GK","Chairman of the Drafting Committee of Indian Constitution:",["Dr. B.R. Ambedkar","Dr. Rajendra Prasad","Jawaharlal Nehru","Sardar Patel"],"Dr. B.R. Ambedkar chaired the Drafting Committee formed in August 1947."),
+
+    Q(32,"Hard","Physics","Object at 30 cm from concave lens (f = -15 cm). Image position v is:",["-10 cm (same side)","+10 cm","-20 cm","-15 cm"],"1/v = 1/f + 1/u = -1/15 - 1/30 = -3/30 => v = -10 cm."),
+    Q(33,"Hard","Physics","A wire of resistance R is stretched to double its length. New resistance:",["4R","2R","R/2","8R"],"Length doubles (2L) and area halves (A/2), so R' = 4R."),
+    Q(34,"Hard","Chemistry","Why is Plaster of Paris stored in moisture-proof containers?",["Reacts with moisture to form hard Gypsum","Sublimes into gas","Catches fire in air","Turns into quicklime"],"CaSO4·½H2O absorbs water to set into hard solid gypsum (CaSO4·2H2O)."),
+    Q(35,"Hard","Chemistry","Which is NOT true in electrolytic refining of copper?",["Impure copper is made cathode","Acidified CuSO4 is electrolyte","Pure copper deposits on cathode","Impurities settle as anode mud"],"Impure copper is always made the ANODE, and pure copper is the cathode."),
+    Q(36,"Hard","Biology","If plants capture 100 J energy, how much reaches Snake in: Plants → Grasshopper → Frog → Snake?",["0.1 J","10 J","1 J","100 J"],"By 10% law: Grasshopper = 10 J, Frog = 1 J, Snake = 0.1 J."),
+    Q(37,"Hard","Maths","Tangent from Q to circle is 24 cm; Q is 25 cm from centre. Radius is:",["7 cm","12 cm","15 cm","24.5 cm"],"r = √(25² - 24²) = √49 = 7 cm."),
+    Q(38,"Hard","Maths","If Mean = 25 and Mode = 28, find Median using empirical formula:",["26","26.5","27","24"],"3 Median = Mode + 2 Mean = 28 + 50 = 78 => Median = 26."),
+    Q(39,"Hard","History","Vernacular Press Act (1878) was passed to:",["Censor Indian-language newspapers and seize presses","Fund regional schools","Remove paper taxes","Grant press freedom"],"Enacted under Lord Lytton to silence nationalist vernacular newspapers."),
+    Q(40,"Hard","History","Crown of oak leaves worn by female allegory 'Germania' stands for:",["Heroism","Readiness to fight","Peace","New era"],"The German oak traditionally symbolizes heroism."),
+    Q(41,"Hard","Civics","Which is an example of a 'Coming Together' federation?",["USA and Switzerland","India","Spain","Belgium"],"USA, Switzerland, and Australia are 'Coming Together' federations."),
+    Q(42,"Hard","Geography","Why is iron & steel industry concentrated in Chotanagpur plateau?",["Low-cost iron ore, coking coal, cheap labour & rail links","Alpine glaciers","Desert oil refineries","Year-round snowfall"],"Bulky raw materials (iron ore, coal, limestone) are clustered there."),
+    Q(43,"Hard","Economics","Limitation of Per Capita Income (Average Income):",["It hides disparities in income distribution","It measures only literacy","It cannot be calculated in rupees","It ignores services"],"Two countries with equal averages can have vastly different inequality."),
+    Q(44,"Hard","Economics","Why are Self-Help Groups (SHGs) vital for rural borrowers?",["Members pool savings to get bank loans without individual collateral","They print currency","They borrow from landlords","They abolish all interest"],"Banks lend to disciplined SHGs even when members lack physical collateral."),
+    Q(45,"Hard","GK","Headquarters of International Solar Alliance (ISA) is in:",["Gurugram, Haryana","Bengaluru","Gandhinagar","Mumbai"],"ISA is headquartered at NISE in Gurugram, Haryana.")
+  ];
+
+  const K = { TH:"c10_t", SN:"c10_s", MS:"c10_m", MK:"c10_k", BM:"c10_b", AC:"c10_a", XP:"c10_x", CU:"c10_c" };
+  const mem = {};
+  function rd(k,f){ try{ const v=localStorage.getItem(k); return v===null?(mem[k]!==undefined?mem[k]:f):JSON.parse(v); }catch(e){ return mem[k]!==undefined?mem[k]:f; } }
+  function wr(k,v){ mem[k]=v; try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+
+  function shuf(a){ const c=a.slice(); for(let i=c.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [c[i],c[j]]=[c[j],c[i]]; } return c; }
+  function prep(q){
+    const tagged = q.o.map((t,i)=>({t:t,ok:i===0}));
+    const s = shuf(tagged);
+    return { id:q.id, d:q.d, s:q.s, q:q.q, opts:s.map(x=>x.t), ans:s.findIndex(x=>x.ok), e:q.e };
+  }
+
+  const st = {
+    th:rd(K.TH,"light"), sn:rd(K.SN,[]), ms:rd(K.MS,[]), mk:rd(K.MK,[]), bm:rd(K.BM,[]),
+    ac:rd(K.AC,null), xp:rd(K.XP,0), cu:rd(K.CU,[]),
+    dif:"Medium", sub:"All", len:10, mode:"practice",
+    deck:[], idx:0, done:false, life:3, resp:[], t0:0, tid:null, sec:30, kind:"std"
+  };
+  const allQs = () => BASE_QS.concat(st.cu);
+  const $ = id => document.getElementById(id);
+
+  function setTheme(t){
+    st.th=t; document.documentElement.setAttribute("data-theme",t); wr(K.TH,t);
+  }
+  function showScr(id){
+    if(st.tid){ clearInterval(st.tid); st.tid=null; }
+    ["homeScr","quizScr","resScr"].forEach(x=>$(x).classList.toggle("active",x===id));
+    if(id==="homeScr") updHome();
+    window.scrollTo(0,0);
+  }
+  function updHome(){
+    const tot = allQs().length;
+    $("xpPill").textContent = st.xp + " XP";
+    $("accVal").textContent = st.ac!==null ? st.ac+"%" : "--%";
+    $("mastVal").textContent = st.ms.length + " / " + tot;
+    const un = Math.max(0, tot - st.sn.length);
+    $("unseenLbl").textContent = un + " Unseen";
+    $("mCnt").textContent = st.mk.length; $("mistakeBtn").disabled = !st.mk.length;
+    $("bCnt").textContent = st.bm.length; $("bmkBtn").disabled = !st.bm.length;
+    if(window.matchMedia("(display-mode: standalone)").matches) $("installBox").classList.add("hide");
+  }
+
+  function buildDeck(pool, count){
+    const n = Math.min(count, pool.length);
+    const seenSet = new Set(st.sn);
+    let un = shuf(pool.filter(q=>!seenSet.has(q.id)));
+    let sn = shuf(pool.filter(q=>seenSet.has(q.id)));
+    let picked = un.length>=n ? un.slice(0,n) : un.concat(sn.slice(0,n-un.length));
+    if(un.length<n){
+      const pIds = new Set(pool.map(q=>q.id));
+      st.sn = st.sn.filter(id=>!pIds.has(id)); wr(K.SN,st.sn);
+    }
+    return shuf(picked).map(prep);
+  }
+
+  function startQuiz(deck, kind){
+    if(!deck.length) return;
+    st.deck=deck; st.idx=0; st.life=3; st.resp=[]; st.t0=Date.now(); st.kind=kind;
+    showScr("quizScr"); renderQ();
+  }
+
+  function renderQ(){
+    if(st.tid){ clearInterval(st.tid); st.tid=null; }
+    st.done=false;
+    const q = st.deck[st.idx], tot = st.deck.length;
+    $("qSub").textContent = q.s + " • " + q.d;
+    $("qCnt").textContent = (st.idx+1) + "/" + tot;
+    $("lCnt").textContent = st.life; $("lifeBtn").disabled = st.life<=0;
+    $("starBtn").textContent = st.bm.includes(q.id) ? "★" : "☆";
+    $("progBar").style.transform = "scaleX(" + ((st.idx+1)/tot) + ")";
+    $("qTxt").textContent = q.q;
+    $("expBox").classList.remove("show"); $("nextBtn").style.display="none";
+
+    const box = $("optBox"); box.innerHTML="";
+    ["A","B","C","D"].forEach((L,i)=>{
+      const b = document.createElement("button"); b.className="opt";
+      b.innerHTML = `<span class="ltr">${L}</span><span>${q.opts[i]}</span>`;
+      b.onclick = () => pick(i);
+      box.appendChild(b);
+    });
+
+    if(st.mode==="timed"){
+      $("tmrBox").style.display="block"; st.sec=30; $("tmrTxt").textContent="30s";
+      st.tid = setInterval(()=>{
+        st.sec--; $("tmrTxt").textContent=st.sec+"s";
+        if(st.sec<=0){ clearInterval(st.tid); st.tid=null; pick(-1); }
+      },1000);
+    } else { $("tmrBox").style.display="none"; }
+  }
+
+  function pick(i){
+    if(st.done) return;
+    st.done=true; if(st.tid){ clearInterval(st.tid); st.tid=null; }
+    $("lifeBtn").disabled=true;
+    const q = st.deck[st.idx], ok = i===q.ans;
+    if(!st.sn.includes(q.id)){ st.sn.push(q.id); wr(K.SN,st.sn); }
+    if(ok){
+      st.xp+=10; wr(K.XP,st.xp);
+      if(!st.ms.includes(q.id)){ st.ms.push(q.id); wr(K.MS,st.ms); }
+      if(st.kind==="mk"){ st.mk=st.mk.filter(x=>x!==q.id); wr(K.MK,st.mk); }
+    } else if(!st.mk.includes(q.id)){ st.mk.push(q.id); wr(K.MK,st.mk); }
+
+    $("optBox").querySelectorAll(".opt").forEach((b,idx)=>{
+      b.disabled=true;
+      if(idx===q.ans) b.classList.add("ok");
+      else if(idx===i) b.classList.add("bad");
+    });
+    st.resp.push({q:q, i:i, ok:ok});
+    $("expHdr").textContent = ok ? "✓ Correct (+10 XP)" : (i===-1 ? "⏰ Time Up!" : "✗ Incorrect (Saved to Mistakes)");
+    $("expHdr").style.color = ok ? "var(--ok)" : "var(--bad)";
+    $("expTxt").textContent = q.e;
+    $("expBox").classList.add("show");
+    $("nextBtn").textContent = st.idx===st.deck.length-1 ? "See Results" : "Next Question →";
+    $("nextBtn").style.display = "flex";
+  }
+
+  function showRes(){
+    const tot = st.resp.length, okCnt = st.resp.filter(r=>r.ok).length;
+    const pct = tot ? Math.round((okCnt/tot)*100) : 0;
+    if(st.ac===null || pct>st.ac){ st.ac=pct; wr(K.AC,pct); }
+    $("resScore").textContent = okCnt + " / " + tot;
+    $("resPct").textContent = pct + "% Accuracy";
+    $("resTime").textContent = "Time: " + Math.max(1,Math.round((Date.now()-st.t0)/1000)) + "s • Total XP: " + st.xp;
+    $("retryBtn").style.display = st.resp.some(r=>!r.ok) ? "flex" : "none";
+    const rev = $("revBox"); rev.innerHTML="";
+    st.resp.forEach((r,idx)=>{
+      const d = document.createElement("div"); d.className="rev";
+      d.innerHTML = `<b>Q${idx+1}. ${r.q.q}</b><div style="color:var(--ok);font-weight:700;margin-top:4px;">✓ ${r.q.opts[r.q.ans]}</div>` +
+        (!r.ok ? `<div style="color:var(--bad);font-size:.84rem;">✗ Yours: ${r.i===-1?"Time Up":r.q.opts[r.i]}</div>` : "") +
+        `<div style="color:var(--muted);font-size:.82rem;margin-top:4px;">${r.q.e}</div>`;
+      rev.appendChild(d);
+    });
+    showScr("resScr");
+  }
+
+  let defPrompt = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); defPrompt=e; $("installBox").classList.remove("hide"); });
+  $("installBtn").onclick = () => {
+    if(defPrompt){ defPrompt.prompt(); defPrompt=null; }
+    else alert("In Chrome, tap the 3 dots (⋮) at top-right and tap 'Add to Home screen' or 'Install app'.");
+  };
+
+  $("themeBtn").onclick = () => setTheme(st.th==="dark"?"light":"dark");
+  $("resetBtn").onclick = () => { if(confirm("Reset seen history?")){ st.sn=[]; st.ms=[]; wr(K.SN,[]); wr(K.MS,[]); updHome(); } };
+
+  function bindChips(grp, attr, key){
+    $(grp).onclick = e => {
+      const b = e.target.closest(".chip"); if(!b) return;
+      st[key] = key==="len" ? Number(b.dataset[attr]) : b.dataset[attr];
+      $(grp).querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));
+    };
+  }
+  bindChips("diffGrp","d","dif"); bindChips("subjGrp","s","sub"); bindChips("lenGrp","l","len"); bindChips("modeGrp","m","mode");
+
+  function getPool(){
+    const all = allQs();
+    if(st.sub==="All") return all.filter(q=>q.d===st.dif);
+    const exact = all.filter(q=>q.s===st.sub && q.d===st.dif);
+    return exact.length ? exact : all.filter(q=>q.s===st.sub);
+  }
+  $("startBtn").onclick = () => {
+    const p = getPool();
+    startQuiz(buildDeck(p, st.sub==="All" ? st.len : p.length), "std");
+  };
+  $("mistakeBtn").onclick = () => startQuiz(shuf(allQs().filter(q=>st.mk.includes(q.id))).map(prep), "mk");
+  $("bmkBtn").onclick = () => startQuiz(shuf(allQs().filter(q=>st.bm.includes(q.id))).map(prep), "bm");
+
+  $("lifeBtn").onclick = () => {
+    if(st.done || st.life<=0) return;
+    const q = st.deck[st.idx];
+    const wrong = shuf([0,1,2,3].filter(x=>x!==q.ans)).slice(0,2);
+    const btns = $("optBox").querySelectorAll(".opt");
+    wrong.forEach(i=>{ btns[i].classList.add("cut"); btns[i].disabled=true; });
+    st.life--; $("lCnt").textContent=st.life; $("lifeBtn").disabled=true;
+  };
+  $("starBtn").onclick = () => {
+    const id = st.deck[st.idx].id;
+    st.bm = st.bm.includes(id) ? st.bm.filter(x=>x!==id) : st.bm.concat(id);
+    wr(K.BM,st.bm); $("starBtn").textContent = st.bm.includes(id) ? "★" : "☆";
+  };
+  $("exitBtn").onclick = () => { if(confirm("Exit current test?")) showScr("homeScr"); };
+  $("nextBtn").onclick = () => { if(st.idx < st.deck.length-1){ st.idx++; renderQ(); } else showRes(); };
+
+  $("againBtn").onclick = () => $("startBtn").click();
+  $("retryBtn").onclick = () => {
+    const ids = st.resp.filter(r=>!r.ok).map(r=>r.q.id);
+    startQuiz(shuf(allQs().filter(q=>ids.includes(q.id))).map(prep), "mk");
+  };
+  $("homeBtn").onclick = () => showScr("homeScr");
+
+  $("addForm").onsubmit = e => {
+    e.preventDefault();
+    st.cu.push(Q(1000+st.cu.length+1, $("cDif").value, $("cSub").value, $("cQ").value.trim(), [$("cA").value.trim(),$("cW1").value.trim(),$("cW2").value.trim(),$("cW3").value.trim()], $("cE").value.trim()));
+    wr(K.CU,st.cu); e.target.reset(); updHome(); alert("Custom question saved!");
+  };
+
+  setTheme(st.th); updHome();
+})();
+</script>
+</body>
+</html>
